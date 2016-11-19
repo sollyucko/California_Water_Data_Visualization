@@ -1,0 +1,3 @@
+[submodule "WebContent\\WEB-INF\\lib\\Parsers"]
+	path = WebContent\\WEB-INF\\lib\\Parsers
+	url = https://github.com/dhDZsG9QfQK3VTiF5KOs/Parsers
