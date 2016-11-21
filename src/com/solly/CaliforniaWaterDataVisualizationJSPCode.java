@@ -29,8 +29,8 @@ public abstract class CaliforniaWaterDataVisualizationJSPCode {
 			out.println("Finished retrieving data from data.ca.gov's 2001 to 2015 surface water toxicity record<br>");
 		} catch(Throwable e) {
 			out.println("Error: <br>" + e + "<br><br>" + "Stack trace: <br>");
-			for(StackTraceElement item : e.getStackTrace()) {
-				out.println(">" + item + "<br>");
+			for(StackTraceElement element : e.getStackTrace()) {
+				out.println(element + "<br>");
 			}
 			out.println("<br>Cause: <br>" + e.getCause());
 		}
