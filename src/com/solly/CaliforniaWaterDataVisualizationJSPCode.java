@@ -11,11 +11,14 @@ import java.sql.SQLException;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.jsp.JspWriter;
 
+import org.sqlite.JDBC;
+
 import com.solly.parser.PSVParser;
 
 public abstract class CaliforniaWaterDataVisualizationJSPCode {
 	static public void update(HttpServletRequest request, JspWriter out) throws IOException, SQLException, ClassNotFoundException {
-		try(Connection dbConnection = DriverManager.getConnection("jdbc:sqlite:California_Water_Data.db")) { 
+		DriverManager.registerDriver(new JDBC());
+		try(Connection dbConnection = DriverManager.getConnection("jdbc:sqlite:California_Water_Data.db")) {
 			if(request.getParameter("caldata-surface-toxic") != null) {
 				URL url = new URL("https://data.ca.gov/sites/default/files/Surface_Water_Toxicity_2001_2015.txt");
 				URLConnection urlConnection = url.openConnection();
@@ -27,12 +30,6 @@ public abstract class CaliforniaWaterDataVisualizationJSPCode {
 				}
 			}
 			out.println("Finished retrieving data from data.ca.gov's 2001 to 2015 surface water toxicity record<br>");
-		} catch(Throwable e) {
-			out.println("Error: <br>" + e + "<br><br>" + "Stack trace: <br>");
-			for(StackTraceElement element : e.getStackTrace()) {
-				out.println(element + "<br>");
-			}
-			out.println("<br>Cause: <br>" + e.getCause());
 		}
 	}
 }
