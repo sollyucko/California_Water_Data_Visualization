@@ -1,8 +1,8 @@
-<%@ page language="java" import="com.solly.CaliforniaWaterDataVisualizationJSPCode" %>
+<%@ page language="java" import="com.solly.californiawaterdatavisualization.JavaCode" %>
 <title>Updating database</title>
 <a href="index.html">Return to home page</a>
 <br>
 Updating database...<br>
 <%
-CaliforniaWaterDataVisualizationJSPCode.update(request, out);
+JavaCode.updateDB(request, out);
 %>
